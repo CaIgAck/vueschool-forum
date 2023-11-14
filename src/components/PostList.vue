@@ -1,44 +1,38 @@
 <script setup lang="ts">
-import { computed, reactive } from 'vue'
-import data from '@/mockup/data.json'
+import { reactive } from 'vue'
+import { data } from '@/mockup/data'
+import type { TPost, TUser } from '@/types'
 
-type TProps = {
-  id: String
+type Props = {
+  posts: TPost[]
 }
 
-const props = defineProps<TProps>()
+const props = defineProps<Props>()
 
-const threads = reactive(data.threads)
-const posts = reactive(data.posts)
-const users = reactive(data.users)
-
-const thread = computed(() => {
-  return threads.find(thread => thread.id === props.id)
-})
+const users: TUser[] = reactive(data.users)
 
 const postById = (postId: string) => {
-  return posts.find(post => post.id === postId)
+  return props.posts.find(post => post.id === postId)
 }
 
-const getUserByPostId = (postId: string) => {
-  return users.find(user => user.id === postById(postId).userId)
+const getUserByPostId = (userId: string) => {
+  return users.find(user => user.id === userId)
 }
 
 </script>
 
 <template>
-  <h1>{{ thread.title }}</h1>
   <div class="post-list">
     <div class="post"
-         v-for="postId in thread.posts"
-         :key="postId"
+         v-for="post in posts"
+         :key="post.id"
     >
 
       <div class="user-info">
-        <a href="#" class="user-name">{{getUserByPostId(postId).name}}</a>
+        <a href="#" class="user-name">{{getUserByPostId(post.userId).name}}</a>
 
         <a href="#">
-          <img class="avatar-large" :src="getUserByPostId(postId).avatar" alt="">
+          <img class="avatar-large" :src="getUserByPostId(post.userId).avatar" alt="">
         </a>
 
         <p class="desktop-only text-small">107 posts</p>
@@ -48,16 +42,17 @@ const getUserByPostId = (postId: string) => {
       <div class="post-content">
         <div>
           <p>
-            {{postById(postId).text}}
+            {{postById(post.id).text}}
           </p>
         </div>
       </div>
 
       <div class="post-date text-faded">
-        {{postById(postId).publishedAt}}
+        {{postById(post.id).publishedAt}}
       </div>
     </div>
   </div>
+
 </template>
 
 <style scoped>

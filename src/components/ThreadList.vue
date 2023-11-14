@@ -1,12 +1,14 @@
 <script setup lang="ts">
-import data from '../mockup/data.json'
-import { reactive } from 'vue'
+import type { TThread, TUser } from '@/types'
 
-const threads = reactive(data.threads)
-const users = reactive(data.users)
+type TProps = {
+  threads: TThread[]
+  users: TUser[]
+}
 
+const props = defineProps<TProps>()
 const getUserById = (userId: string) => {
-  return users.find(user => user.id === userId)
+  return props.users.find(user => user.id === userId)
 }
 </script>
 
@@ -17,10 +19,11 @@ const getUserById = (userId: string) => {
 
       <h2 class="list-title">Threads</h2>
 
-      <div v-for="thread in threads" :key="thread.id" class="thread">
+      <div v-for="thread in props.threads" :key="thread.id" class="thread">
+
         <div>
           <p>
-            <a href="#">{{ thread.title }}</a>
+            <router-link :to="`/thread/${thread.id}`">{{ thread.title }}</router-link>
           </p>
           <p class="text-faded text-xsmall">
             By <a href="#">{{ getUserById(thread.userId).name }}</a>, {{ thread.publishedAt }}.
