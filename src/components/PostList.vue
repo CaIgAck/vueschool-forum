@@ -2,6 +2,9 @@
 import { reactive } from 'vue'
 import { data } from '@/mockup/data'
 import type { TPost, TUser } from '@/types'
+import dayjs from 'dayjs'
+import relativeTime from 'dayjs/plugin/relativeTime'
+dayjs.extend(relativeTime)
 
 type Props = {
   posts: TPost[]
@@ -11,20 +14,19 @@ const props = defineProps<Props>()
 
 const users: TUser[] = reactive(data.users)
 
-const postById = (postId: string) => {
-  return props.posts.find(post => post.id === postId)
-}
-
 const getUserByPostId = (userId: string) => {
   return users.find(user => user.id === userId)
 }
 
+const convertPublishedAt = (publishedAt: number) => {
+  return dayjs.unix(publishedAt).fromNow()
+}
 </script>
 
 <template>
   <div class="post-list">
     <div class="post"
-         v-for="post in posts"
+         v-for="post in props.posts"
          :key="post.id"
     >
 
@@ -35,20 +37,18 @@ const getUserByPostId = (userId: string) => {
           <img class="avatar-large" :src="getUserByPostId(post.userId).avatar" alt="">
         </a>
 
-        <p class="desktop-only text-small">107 posts</p>
-
       </div>
 
       <div class="post-content">
         <div>
           <p>
-            {{postById(post.id).text}}
+            {{post.text}}
           </p>
         </div>
       </div>
 
       <div class="post-date text-faded">
-        {{postById(post.id).publishedAt}}
+        {{ convertPublishedAt(post.publishedAt) }}
       </div>
     </div>
   </div>

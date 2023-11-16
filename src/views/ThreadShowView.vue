@@ -3,9 +3,10 @@ import { computed, reactive } from 'vue'
 import { data } from '@/mockup/data'
 import PostList from '@/components/PostList.vue'
 import type { TThread, TPost } from '@/types'
+import PostEditor from '@/components/PostEditor.vue'
 
 type TProps = {
-  id: String
+  id: string
 }
 
 const props = defineProps<TProps>()
@@ -21,6 +22,11 @@ const threadPosts = computed(() => {
   return posts.filter(post => post.threadId === props.id)
 })
 
+const createPost = (post: TPost) => {
+  posts.push(post)
+  threads.find(thread => thread.id === props.id).posts.push(post.id)
+}
+
 </script>
 
 <template>
@@ -28,5 +34,7 @@ const threadPosts = computed(() => {
   <h1>{{ thread.title }}</h1>
 
   <PostList :posts="threadPosts" />
+
+  <PostEditor :id="props.id" @save-post="createPost" />
 </div>
 </template>
