@@ -1,6 +1,6 @@
-import type { Category, TPost, TThread, TUser, Stats } from '@/types'
+import type { TCategory, TPost, TThread, TUser, Stats } from '@/types'
 
-export type ForumElement = {
+export type TForumElement = {
     categoryId: string;
     description: string;
     lastPostId?: string;
@@ -11,8 +11,8 @@ export type ForumElement = {
 }
 
 export type TForum = {
-    categories: Category[];
-    forums: ForumElement[];
+    categories: TCategory[];
+    forums: TForumElement[];
     posts: TPost[];
     stats: Stats;
     threads: TThread[];

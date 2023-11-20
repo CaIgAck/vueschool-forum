@@ -2,24 +2,18 @@
 import { reactive } from 'vue'
 import { data } from '@/mockup/data'
 import type { TPost, TUser } from '@/types'
-import dayjs from 'dayjs'
-import relativeTime from 'dayjs/plugin/relativeTime'
-dayjs.extend(relativeTime)
+import BaseFormattingDate from '@/components/BaseFormattingDate.vue'
 
-type Props = {
+type TProps = {
   posts: TPost[]
 }
 
-const props = defineProps<Props>()
+const props = defineProps<TProps>()
 
 const users: TUser[] = reactive(data.users)
 
 const getUserByPostId = (userId: string) => {
   return users.find(user => user.id === userId)
-}
-
-const convertPublishedAt = (publishedAt: number) => {
-  return dayjs.unix(publishedAt).fromNow()
 }
 </script>
 
@@ -48,7 +42,7 @@ const convertPublishedAt = (publishedAt: number) => {
       </div>
 
       <div class="post-date text-faded">
-        {{ convertPublishedAt(post.publishedAt) }}
+        <BaseFormattingDate :date="post.publishedAt" />
       </div>
     </div>
   </div>

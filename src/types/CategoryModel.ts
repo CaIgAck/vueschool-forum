@@ -1,4 +1,4 @@
-export type Category = {
+export type TCategory = {
     forums: string[];
     name: string;
     slug: string;

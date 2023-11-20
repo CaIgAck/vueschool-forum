@@ -1,17 +1,15 @@
 <script setup lang="ts">
-import ThreadList from '@/components/ThreadList.vue'
 import { data } from '@/mockup/data'
 import { reactive } from 'vue'
-import type { TThread, TUser } from '@/types'
+import type { TCategory } from '@/types'
+import CategoryList from '@/components/CategoryList.vue'
 
-const threads: TThread[] = reactive(data.threads)
-const users: TUser[] = reactive(data.users)
-
+const categories: TCategory[] = reactive(data.categories)
 </script>
 
 <template>
-  <h1>
+  <h1 class="text-center">
     Welcome to forums
   </h1>
-  <ThreadList :threads="threads" :users="users" />
+  <CategoryList :categories="categories" />
 </template>

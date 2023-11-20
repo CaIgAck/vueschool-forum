@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import type { TThread, TUser } from '@/types'
+import BaseFormattingDate from '@/components/BaseFormattingDate.vue'
 
 type TProps = {
   threads: TThread[]
@@ -26,7 +27,8 @@ const getUserById = (userId: string) => {
             <router-link :to="`/thread/${thread.id}`">{{ thread.title }}</router-link>
           </p>
           <p class="text-faded text-xsmall">
-            By <a href="#">{{ getUserById(thread.userId).name }}</a>, {{ thread.publishedAt }}.
+            By <a href="#">{{ getUserById(thread.userId).name }}</a>,
+            <BaseFormattingDate :date="thread.publishedAt" />.
           </p>
         </div>
 
@@ -41,7 +43,9 @@ const getUserById = (userId: string) => {
             <p class="text-xsmall">
               <a href="#">{{ getUserById(thread.userId).name }}</a>
             </p>
-            <p class="text-xsmall text-faded">{{ thread.publishedAt }}</p>
+            <p class="text-xsmall text-faded">
+              <BaseFormattingDate :date="thread.publishedAt" />
+            </p>
           </div>
         </div>
       </div>
