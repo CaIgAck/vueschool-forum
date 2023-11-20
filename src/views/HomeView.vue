@@ -1,10 +1,10 @@
 <script setup lang="ts">
-import { data } from '@/mockup/data'
-import { reactive } from 'vue'
-import type { TCategory } from '@/types'
+import { useCategoriesStore } from '@/stores/CategoriesStore'
+import { storeToRefs } from 'pinia'
 import CategoryList from '@/components/CategoryList.vue'
 
-const categories: TCategory[] = reactive(data.categories)
+const { categories } = storeToRefs(useCategoriesStore())
+
 </script>
 
 <template>
