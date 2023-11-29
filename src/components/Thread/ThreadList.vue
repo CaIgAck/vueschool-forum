@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import type { TThread, TUser } from '@/types'
-import BaseFormattingDate from '@/components/BaseFormattingDate.vue'
+import BaseFormattingDate from '@/components/UI/BaseFormattingDate.vue'
 
 type TProps = {
   threads: TThread[]

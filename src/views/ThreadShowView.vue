@@ -1,9 +1,9 @@
 <script setup lang="ts">
 import { computed, reactive } from 'vue'
 import { data } from '@/mockup/data'
-import PostList from '@/components/PostList.vue'
+import PostList from '@/components/Post/PostList.vue'
 import type { TThread, TPost } from '@/types'
-import PostEditor from '@/components/PostEditor.vue'
+import PostEditor from '@/components/Post/PostEditor.vue'
 
 type TProps = {
   id: string

@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import ThreadList from '@/components/ThreadList.vue'
+import ThreadList from '@/components/Thread/ThreadList.vue'
 import { data } from '@/mockup/data'
 import { computed, reactive } from 'vue'
 import type { TForumElement, TThread, TUser } from '@/types'

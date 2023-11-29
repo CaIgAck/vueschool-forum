@@ -2,7 +2,7 @@
 import { reactive } from 'vue'
 import { data } from '@/mockup/data'
 import type { TPost, TUser } from '@/types'
-import BaseFormattingDate from '@/components/BaseFormattingDate.vue'
+import BaseFormattingDate from '@/components/UI/BaseFormattingDate.vue'
 
 type TProps = {
   posts: TPost[]
@@ -128,13 +128,13 @@ const getUserByPostId = (userId: string) => {
     background: rgba(73, 89, 96, 0.06);
     padding-right: 10px;
     padding-top: 16px;
-    margin-bottom: 0px;
+    margin-bottom: 0;
   }
 }
 
 @media (max-width: 720px) {
   .post {
-    padding: 0px;
+    padding: 0;
   }
 }
 
@@ -166,33 +166,33 @@ const getUserByPostId = (userId: string) => {
 }
 
 .post-content blockquote {
-  margin: 25px 0px;
+  margin: 25px 0;
 }
 
-.post-content blockquote.big {
+.post-content blockquote {
   display: flex;
   position: relative;
 }
 
-.post-content blockquote.big::before {
+.post-content blockquote::before {
   position: absolute;
   top: -25px;
   left: -25px;
   font-size: 42px;
-  font-family: FontAwesome;
+  font-family: FontAwesome,sans-serif;
   content: "\f10e";
   color: #263959;
 }
 
 @media (max-width: 820px) {
-  .post-content blockquote.big::before {
+  .post-content blockquote::before {
     top: -15px;
     left: -18px;
     font-size: 32px;
   }
 }
 
-.post-content blockquote.big .quote {
+.post-content blockquote {
   padding-left: 20px;
   padding-right: 15px;
   flex-basis: 95%;
@@ -201,7 +201,7 @@ const getUserByPostId = (userId: string) => {
   font-size: 17px;
 }
 
-.post-content blockquote.big .author {
+.post-content blockquote {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -217,7 +217,7 @@ const getUserByPostId = (userId: string) => {
   height: 80px;
 }
 
-.post-content blockquote.small {
+.post-content blockquote {
   position: relative;
   flex-direction: column;
   border: 2px solid rgba(152, 152, 152, 0.15);
@@ -225,25 +225,25 @@ const getUserByPostId = (userId: string) => {
   border-bottom-right-radius: 5px;
 }
 
-.post-content blockquote.small::before {
+.post-content blockquote::before {
   position: absolute;
   top: -20px;
   left: -20px;
   font-size: 42px;
-  font-family: FontAwesome;
+  font-family: FontAwesome,sans-serif;
   content: "\f10e";
   color: #263959;
 }
 
 @media (max-width: 820px) {
-  .post-content blockquote.small::before {
+  .post-content blockquote::before {
     top: -18px;
     left: -15px;
     font-size: 32px;
   }
 }
 
-.post-content blockquote.small .author {
+.post-content blockquote {
   display: flex;
   flex-basis: 100%;
   padding: 3px 10px 3px 28px;
@@ -252,20 +252,20 @@ const getUserByPostId = (userId: string) => {
   align-items: center;
 }
 
-.post-content blockquote.small .author .time {
+.post-content blockquote {
   margin-left: 10px;
 }
 
-.post-content blockquote.small .author .fa {
+.post-content blockquote {
   margin-left: auto;
   font-size: 20px;
 }
 
-.post-content blockquote.small .author .fa:hover {
+.post-content blockquote {
   cursor: pointer;
 }
 
-.post-content blockquote.small .quote {
+.post-content blockquote {
   display: flex;
   flex-basis: 100%;
   flex-direction: column;
@@ -275,44 +275,39 @@ const getUserByPostId = (userId: string) => {
   font-size: 17px;
 }
 
-.post-content blockquote.simple {
+.post-content blockquote {
   position: relative;
-  padding: 0px 10px 0px 20px;
+  padding: 0 10px 0 20px;
   font-weight: 100;
   font-style: italic;
   font-size: 17px;
-  letter-spacing: .15px;
 }
 
-.post-content blockquote.simple::before {
+.post-content blockquote::before {
   position: absolute;
   top: -25px;
   left: -25px;
   font-size: 42px;
-  font-family: FontAwesome;
+  font-family: FontAwesome,sans-serif;
   content: "\f10e";
   color: #263959;
 }
 
 @media (max-width: 820px) {
-  .post-content blockquote.simple::before {
+  .post-content blockquote::before {
     top: -15px;
     left: -18px;
     font-size: 32px;
   }
 }
 
-.post-content blockquote.simple .author {
+.post-content blockquote {
   display: block;
   margin-top: 10px;
   font-weight: normal;
 }
 
-.post-content blockquote.simple .author .time {
+.post-content blockquote {
   margin-left: 10px;
-}
-
-.post-listing-editor {
-  flex: 1 1 83%;
 }
 </style>

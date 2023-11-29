@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import ForumList from '@/components/ForumList.vue'
+import ForumList from '@/components/Forum/ForumList.vue'
 import { data } from '@/mockup/data'
 import { computed, ref } from 'vue'
 import type { Ref } from 'vue'
