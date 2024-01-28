@@ -92,8 +92,7 @@ const getUserByPostId = (userId: string) => {
     justify-content: flex-start;
     background: rgba(73, 89, 96, 0.06);
     margin-right: 0;
-    padding: 5px;
-    padding-left: 10px;
+    padding: 5px 5px 5px 10px;
   }
 
   .post .user-info .avatar-large {
